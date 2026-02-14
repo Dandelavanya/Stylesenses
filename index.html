@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleAI – Personal Fashion Styling</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="header">
+      <h1 class="logo">Style<span class="logo-ai">AI</span></h1>
+      <p class="tagline">AI-powered fashion styling for your skin tone</p>
+    </header>
+
+    <main class="main">
+      <section class="upload-section card">
+        <h2>Upload your photo</h2>
+        <p class="hint">We'll detect your skin tone from your face to suggest the best looks. Max 10MB; PNG, JPG, JPEG, GIF, WebP.</p>
+
+        <form id="analyze-form" class="analyze-form">
+          <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Drop image or click to browse">
+            <input type="file" id="file-input" name="image" accept=".png,.jpg,.jpeg,.gif,.webp" hidden>
+            <div class="dropzone-inner">
+              <span class="dropzone-icon" aria-hidden="true">📷</span>
+              <span class="dropzone-text">Drag & drop your photo here, or <strong>click to browse</strong></span>
+            </div>
+          </div>
+
+          <div class="gender-row">
+            <label>Gender for recommendations</label>
+            <div class="gender-options">
+              <label class="radio-wrap">
+                <input type="radio" name="gender" value="Female" checked>
+                <span>Female</span>
+              </label>
+              <label class="radio-wrap">
+                <input type="radio" name="gender" value="Male">
+                <span>Male</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
+            Get my style recommendations
+          </button>
+        </form>
+      </section>
+
+      <div id="loading" class="loading hidden" aria-live="polite">
+        <div class="loader"></div>
+        <p>Analyzing skin tone and generating recommendations…</p>
+      </div>
+
+      <section id="results" class="results hidden">
+        <h2 class="results-title">Your style profile</h2>
+
+        <div class="skin-tone-card card">
+          <h3>Detected skin tone</h3>
+          <p class="skin-tone-badge" id="skin-tone-badge">—</p>
+          <p class="face-message" id="face-message"></p>
+          <div class="rgb-block">
+            <span class="rgb-label">RGB from face region</span>
+            <div class="rgb-values" id="rgb-values">R — G — B —</div>
+            <div class="rgb-swatch" id="rgb-swatch"></div>
+          </div>
+        </div>
+
+        <div class="reasoning-card card">
+          <h3>Why these recommendations work</h3>
+          <p class="reasoning-text" id="reasoning-text"></p>
+        </div>
+
+        <div class="palette-card card">
+          <h3>Suggested color palette</h3>
+          <div class="palette-grid" id="palette-grid"></div>
+        </div>
+
+        <div class="outfits-card card">
+          <h3>Outfit ideas by occasion</h3>
+          <div class="outfit-tabs" id="outfit-tabs"></div>
+          <div class="outfit-content" id="outfit-content"></div>
+        </div>
+
+        <div class="hairstyle-card card">
+          <h3>Hairstyle & maintenance</h3>
+          <p class="hairstyle-suggestion" id="hairstyle-suggestion"></p>
+          <p class="maintenance-tips" id="maintenance-tips"></p>
+        </div>
+
+        <div class="accessories-card card">
+          <h3>Accessories</h3>
+          <ul class="accessories-list" id="accessories-list"></ul>
+        </div>
+
+        <div class="shopping-card card">
+          <h3>Shop at Indian retailers</h3>
+          <div class="shopping-links" id="shopping-links"></div>
+        </div>
+      </section>
+
+      <div id="error-toast" class="toast error hidden" role="alert"></div>
+    </main>
+
+    <footer class="footer">
+      <p>StyleAI · Skin tone–aware fashion recommendations · No API key required for demo</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – Styling AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body class="page-inner">
+  <header class="site-header">
+    <a href="{{ url_for('index') }}" class="site-logo">Styling AI</a>
+    <nav class="site-nav">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('features') }}">Features</a>
+      <a href="{{ url_for('pricing') }}">Pricing</a>
+      <a href="{{ url_for('testimonials') }}">Testimonials</a>
+      <a href="{{ url_for('about') }}" class="active">About</a>
+    </nav>
+  </header>
+
+  <main class="inner-main">
+    <h1 class="inner-title">About Styling AI</h1>
+    <div class="about-content">
+      <p>Styling AI uses AI to analyze your skin tone and suggest personalized fashion recommendations—from outfits and accessories to shopping links at Amazon.in, Myntra, and Zara.</p>
+      <p>Upload a photo, and our system detects your face, extracts RGB values, and classifies your skin tone (Fair, Medium, Olive, or Deep). You'll receive gender-specific outfit ideas, hairstyle tips, color palettes, and curated product links tailored to your unique look.</p>
+    </div>
+    <p class="inner-cta"><a href="{{ url_for('styling') }}" class="btn btn-hero">Get Started</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Styling AI. Your personal AI fashion stylist.</p>
+  </footer>
+</body>
+</html>
